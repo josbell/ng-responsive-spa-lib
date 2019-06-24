@@ -1,0 +1,9 @@
+<nav fxHide fxShow.gt-sm mat-tab-nav-bar>
+  <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

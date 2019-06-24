@@ -1,0 +1,6 @@
+<div [ngSwitch]="config.type" [formGroup]="form">
+  <mat-form-field *ngSwitchCase="'string'">
+    <input matInput placeholder="{{config.label}}" [formControlName]="config.key" [readonly]="operation == 'view'">
+    <mat-error *ngIf="control.invalid && submitted">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>

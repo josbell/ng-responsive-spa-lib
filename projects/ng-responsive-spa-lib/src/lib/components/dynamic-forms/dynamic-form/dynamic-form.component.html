@@ -1,0 +1,23 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div *ngFor="let formField of formFields">
+      <rsl-dynamic-field [config]="formField" [form]="form" [operation]="operation" [submitted]="submitted">
+      </rsl-dynamic-field>
+    </div>
+    <div *ngIf="operation == 'view'" class="buttons" fxLayout fxLayoutAlign="space-between" fxLayoutAlign.gt-sm="end"
+      fxLayoutGap="20px">
+      <button mat-raised-button color="primary" (click)="onCancel()">Go Back</button>
+      <button mat-raised-button color="primary" (click)="onEdit()">Edit</button>
+    </div>
+    <div *ngIf="operation == 'edit'" class="buttons" fxLayout fxLayoutAlign="space-between" fxLayoutAlign.gt-sm="end"
+      fxLayoutGap="20px">
+      <button mat-raised-button color="primary" (click)="onCancel()">Go Back</button>
+      <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </div>
+    <div *ngIf="operation == 'create'" class="buttons" fxLayout fxLayoutAlign="space-between" fxLayoutAlign.gt-sm="end"
+      fxLayoutGap="20px">
+      <button mat-raised-button color="primary" (click)="onCancel()">Go Back</button>
+      <button *ngIf="operation !== 'view'" mat-raised-button color="primary" (click)="onCreate()">Create</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card id="signInCard">
+    <mat-card-title>Sign In</mat-card-title>
+    <mat-card-content>
+      <form fxLayout="column" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+        <mat-form-field>
+          <input matInput type="text" class="form-control" required name="username" autocomplete="username"
+            placeholder="Username" ngModel #username="ngModel">
+          <mat-error [hidden]="username.valid || username.pristine">Username is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" class="form-control" required name="password" autocomplete="current-password"
+            placeholder="Password" ngModel #password="ngModel">
+          <mat-error [hidden]="password.valid || password.pristine">Password is required</mat-error>
+        </mat-form-field>
+        <mat-error [hidden]="!serverError">{{serverError}}</mat-error>
+        <div id="rememberMe">
+          <mat-checkbox ngModel name="rememberme">Remember me</mat-checkbox>
+        </div>
+        <div *ngIf="!submitting" id="buttons" fxLayout fxLayoutAlign="space-between center">
+          <button id="register" matInput type="button" mat-raised-button routerLink="/register">Register</button>
+          <button id="submit" matInput type="submit" mat-raised-button color="accent">Sign In</button>
+        </div>
+        <div *ngIf="submitting" id="buttons" fxLayout>
+          <p>Signing In...</p>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

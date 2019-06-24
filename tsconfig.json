@@ -18,6 +18,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-responsive-spa-lib": [
+        "dist/ng-responsive-spa-lib"
+      ],
+      "ng-responsive-spa-lib/*": [
+        "dist/ng-responsive-spa-lib/*"
+      ]
+    }
   }
 }

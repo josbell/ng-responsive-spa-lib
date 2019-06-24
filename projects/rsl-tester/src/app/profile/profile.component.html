@@ -1,0 +1,5 @@
+<div class="container" fxLayout fxLayoutAlign="center center">
+  <rsl-dynamic-form [viewModel]="profile" [formFields]="fields" [operation]="operation$ | async"
+    (update)="updateProfile($event)">
+  </rsl-dynamic-form>
+</div>
