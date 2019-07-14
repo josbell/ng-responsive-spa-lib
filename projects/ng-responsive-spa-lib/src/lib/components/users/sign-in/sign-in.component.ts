@@ -22,16 +22,13 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log('submitting ', form);
     this.submitting = true;
     this.userApi.signIn(form.value.username, form.value.password, form.value.rememberme)
       .subscribe(data => {
-        console.log('got valid data', data);
         this.router.navigate(['/']);
       },
         (err) => {
           this.submitting = false;
-          console.log('got error', err);
           this.serverError = err;
         });
   }

@@ -3,7 +3,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NotificationsComponent } from './notifications/notifications.component';
 import { TeamsComponent } from './teams/teams.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';

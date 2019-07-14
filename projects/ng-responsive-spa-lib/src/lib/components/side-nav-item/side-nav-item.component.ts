@@ -29,7 +29,6 @@ export class SideNavItemComponent implements OnInit {
 
   onItemSelected(item: MenuItem) {
     if (!item.submenu || !item.submenu.length) {
-      console.log(item);
       this.onCloseMenu();
       this.router.navigate([item.route]);
     }

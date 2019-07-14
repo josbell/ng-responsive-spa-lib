@@ -3,7 +3,7 @@ import { StudentProfile } from '../view-models/student-profile';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { profileFormFields as fieldsConfig} from '../form-configs/profile-form-fields';
-import { map } from 'rxjs/internal/operators';
+import { map } from 'rxjs/operators';
 import { AppDataService } from '../services/app-data.service';
 
 
@@ -29,7 +29,6 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile = (data) => {
-    console.log(data);
     this.router.navigate(['../view'], { relativeTo: this.route });
   }
 

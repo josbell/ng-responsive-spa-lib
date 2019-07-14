@@ -9,12 +9,12 @@ import { Observable, of } from 'rxjs';
 export class AppDataService {
   profile: StudentProfile = {
     id: 'a123',
-    firstName: 'Josbell',
-    lastName: 'Quiros',
-    email: 'josbell.quiros@gmail.com',
-    userName: 'josbell.quiros',
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'john.doe@gmail.com',
+    userName: 'john.doe',
     password: '123456',
-    birthday: new Date('1985, 09, 27'),
+    birthday: new Date('1990, 01, 01'),
     membership: 'premium'
   };
 
