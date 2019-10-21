@@ -41,8 +41,10 @@ export class SignInComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const { email, password, rememberMe } = this.signInForm.value;
-    this.userApi.signInWithEmail(email, password, rememberMe);
+    if (this.signInForm.valid) {
+      const { email, password, rememberMe } = this.signInForm.value;
+      this.userApi.signInWithEmail(email, password, rememberMe);
+    }
   }
 
   ngOnDestroy() {
