@@ -6,6 +6,10 @@ Uses Angular Material and Angular FlexLayout.
 This framework can be used to streamline development of responsive layout and dynamic menu and forms.
 
 
+
+
+
+
 ---
 ## Installation
 
@@ -15,6 +19,10 @@ The library is available as npm package, so all you need to do is run the follow
  ```
 
 This command will create a record in your package.json file and install the package into the npm modules folder.
+
+
+
+
 
 
 ---
@@ -40,6 +48,40 @@ import { NgResponsiveSpaLibModule } from 'ng-responsive-spa-lib';
 })
 // ...
 ```
+
+
+
+
+
+
+---
+## Add Material Theme and Icons
+
+
+### Themes
+
+Including a theme is required to apply all of the core and theme styles to your application.
+
+To get started with a prebuilt theme, include one of Angular Material's prebuilt themes globally in your application. If you're using the Angular CLI, you can add this to your styles.css:
+
+```typescript
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+```
+
+If you are not using the Angular CLI, you can include a prebuilt theme via a <link> element in your index.html.
+
+Look up Angular Material Themes
+### Icons
+
+If you want to use the mat-icon component with the official Material Design Icons, load the icon font in your `index.html`.
+
+```typescript
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
+
+
+
 
 
 ---
@@ -91,6 +133,8 @@ constructor(configService: NgResponsiveSpaLibService) {
     configService.configure(frameworkConfig);
   }
 ```
+
+
 
 
 

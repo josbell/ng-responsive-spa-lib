@@ -2,37 +2,102 @@
   <mat-card id="registerCard">
     <mat-card-title>Register</mat-card-title>
     <mat-card-content>
-      <form fxLayout="column" #registerForm="ngForm" (ngSubmit)="registerForm.valid && onSubmit(registerForm)">
+      <form
+        fxLayout="column"
+        #registerForm="ngForm"
+        (ngSubmit)="registerForm.valid && onSubmit(registerForm)"
+      >
         <mat-form-field>
-          <input matInput type="text" class="form-control" required name="firstname" autocomplete="firstname"
-            placeholder="First Name" ngModel #firstname="ngModel">
-          <mat-error [hidden]="firstname.valid || firstname.pristine">First name is required</mat-error>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            required
+            name="firstname"
+            autocomplete="firstname"
+            placeholder="First Name"
+            ngModel
+            #firstname="ngModel"
+          />
+          <mat-error [hidden]="firstname.valid || firstname.pristine"
+            >First name is required</mat-error
+          >
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" class="form-control" required name="lastname" autocomplete="lastname"
-            placeholder="Last Name" ngModel #lastname="ngModel">
-          <mat-error [hidden]="lastname.valid || lastname.pristine">Last name is required</mat-error>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            required
+            name="lastname"
+            autocomplete="lastname"
+            placeholder="Last Name"
+            ngModel
+            #lastname="ngModel"
+          />
+          <mat-error [hidden]="lastname.valid || lastname.pristine"
+            >Last name is required</mat-error
+          >
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" class="form-control" required name="email" autocomplete="email"
-            placeholder="Email" ngModel #email="ngModel">
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            required
+            name="email"
+            autocomplete="email"
+            placeholder="Email"
+            ngModel
+            #email="ngModel"
+          />
           <mat-error [hidden]="email.valid || email.pristine">Email is required</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="text" class="form-control" required name="username" autocomplete="username"
-            placeholder="Username" ngModel #username="ngModel">
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            required
+            name="username"
+            autocomplete="username"
+            placeholder="Username"
+            ngModel
+            #username="ngModel"
+          />
           <mat-error [hidden]="username.valid || username.pristine">Username is required</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="password" class="form-control" required name="password" autocomplete="current-password"
-            placeholder="Password" ngModel #password="ngModel">
+          <input
+            matInput
+            type="password"
+            class="form-control"
+            required
+            name="password"
+            autocomplete="current-password"
+            placeholder="Password"
+            ngModel
+            #password="ngModel"
+          />
           <mat-error [hidden]="password.valid || password.pristine">Password is required</mat-error>
         </mat-form-field>
-        <div *ngIf="!submitting" id="buttons" fxLayout fxLayoutAlign="space-between center">
-          <button id="submit" matInput type="button" mat-raised-button routerLink="/signin">Sign In</button>
-          <button id="register" matInput type="submit" mat-raised-button color="accent">Register</button>
+        <mat-error [hidden]="!(userApi.hasRegisterError | async)">{{
+          userApi.registerErrorMsg | async
+        }}</mat-error>
+        <div
+          *ngIf="!(userApi.submitting | async)"
+          id="buttons"
+          fxLayout
+          fxLayoutAlign="space-between center"
+        >
+          <button id="submit" matInput type="button" mat-raised-button routerLink="/signin">
+            Sign In
+          </button>
+          <button id="register" matInput type="submit" mat-raised-button color="accent">
+            Register
+          </button>
         </div>
-        <div *ngIf="submitting" id="buttons" fxLayout>
+        <div *ngIf="userApi.submitting | async" id="buttons" fxLayout>
           <p>Registering...</p>
         </div>
       </form>

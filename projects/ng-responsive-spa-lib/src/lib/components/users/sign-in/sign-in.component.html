@@ -2,26 +2,75 @@
   <mat-card id="signInCard">
     <mat-card-title>Sign In</mat-card-title>
     <mat-card-content>
-      <form fxLayout="column" #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+      <form [formGroup]="signInForm" fxLayout="column" (ngSubmit)="signInForm.valid && onSubmit()">
         <mat-form-field>
-          <input matInput type="text" class="form-control" required name="username" autocomplete="username"
-            placeholder="Username" ngModel #username="ngModel">
-          <mat-error [hidden]="username.valid || username.pristine">Username is required</mat-error>
+          <input
+            matInput
+            formControlName="email"
+            type="text"
+            class="form-control"
+            required
+            autocomplete="email"
+            placeholder="john@email.com"
+          />
+          <mat-error
+            *ngIf="
+              (emailControl.dirty || emailControl.touched) &&
+              emailControl.invalid &&
+              emailControl.errors?.required
+            "
+            >Email/Username is required</mat-error
+          >
         </mat-form-field>
         <mat-form-field>
-          <input matInput type="password" class="form-control" required name="password" autocomplete="current-password"
-            placeholder="Password" ngModel #password="ngModel">
-          <mat-error [hidden]="password.valid || password.pristine">Password is required</mat-error>
+          <input
+            matInput
+            formControlName="password"
+            type="password"
+            class="form-control"
+            required
+            minlength="6"
+            name="password"
+            autocomplete="current-password"
+            placeholder="Password"
+          />
+          <mat-error
+            *ngIf="
+              (passwordControl.dirty || passwordControl.touched) &&
+              passwordControl.invalid &&
+              passwordControl.errors?.required
+            "
+            >Password is required</mat-error
+          >
+          <mat-error
+            *ngIf="
+              (passwordControl.dirty || passwordControl.touched) &&
+              passwordControl.invalid &&
+              passwordControl.errors?.minlength
+            "
+            >Password does not meet requirements</mat-error
+          >
         </mat-form-field>
-        <mat-error [hidden]="!serverError">{{serverError}}</mat-error>
+        <mat-error [hidden]="!(userApi.hasSignInError | async)">{{
+          userApi.signInErrorMsg | async
+        }}</mat-error>
         <div id="rememberMe">
-          <mat-checkbox ngModel name="rememberme">Remember me</mat-checkbox>
+          <mat-checkbox formControlName="rememberMe">Remember me</mat-checkbox>
         </div>
-        <div *ngIf="!submitting" id="buttons" fxLayout fxLayoutAlign="space-between center">
-          <button id="register" matInput type="button" mat-raised-button routerLink="/register">Register</button>
-          <button id="submit" matInput type="submit" mat-raised-button color="accent">Sign In</button>
+        <div
+          *ngIf="!(userApi.submitting | async)"
+          id="buttons"
+          fxLayout
+          fxLayoutAlign="space-between center"
+        >
+          <button id="register" matInput type="button" mat-raised-button routerLink="/register">
+            Register
+          </button>
+          <button id="submit" matInput type="submit" mat-raised-button color="accent">
+            Sign In
+          </button>
         </div>
-        <div *ngIf="submitting" id="buttons" fxLayout>
+        <div *ngIf="userApi.submitting | async" id="buttons" fxLayout>
           <p>Signing In...</p>
         </div>
       </form>

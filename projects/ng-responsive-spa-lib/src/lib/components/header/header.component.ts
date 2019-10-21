@@ -20,11 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut() {
-    this.userApi.signOut()
-      .subscribe(
-        data => this.router.navigate(['/']),
-        err => console.log(err)
-      );
+    this.userApi.signOut();
   }
 
 }

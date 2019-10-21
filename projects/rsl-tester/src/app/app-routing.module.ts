@@ -21,27 +21,33 @@ const routes: Routes = [
   { path: 'services', component: StudioServicesComponent },
   { path: 'signin', component: SignInComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'myaccount', component: MyAccountComponent, canActivate: [AuthGuardService],
+  {
+    path: 'myaccount',
+    component: MyAccountComponent,
+    canActivate: [AuthGuardService],
     children: [
-      { path: '', canActivateChild: [AuthGuardService],
-      children: [
-        { path: 'profile/:operation', component: ProfileComponent},
-        { path: 'profile', redirectTo: 'profile/view', pathMatch: 'full'},
-        { path: 'subscription/:operation', component: SubscriptionComponent},
-        { path: 'subscription', redirectTo: 'subscription/view', pathMatch: 'full'},
-        { path: 'teams/:operation', component: TeamsComponent},
-        { path: 'teams', redirectTo: 'teams/view', pathMatch: 'full'},
-        { path: 'notifications/:operation', component: NotificationsComponent},
-        { path: 'notifications', redirectTo: 'notifications/view', pathMatch: 'full'},
-      ]}
-    ]
+      {
+        path: '',
+        canActivateChild: [AuthGuardService],
+        children: [
+          { path: 'profile/:operation', component: ProfileComponent },
+          { path: 'profile', redirectTo: 'profile/view', pathMatch: 'full' },
+          { path: 'subscription/:operation', component: SubscriptionComponent },
+          { path: 'subscription', redirectTo: 'subscription/view', pathMatch: 'full' },
+          { path: 'teams/:operation', component: TeamsComponent },
+          { path: 'teams', redirectTo: 'teams/view', pathMatch: 'full' },
+          { path: 'notifications/:operation', component: NotificationsComponent },
+          { path: 'notifications', redirectTo: 'notifications/view', pathMatch: 'full' },
+        ],
+      },
+    ],
   },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

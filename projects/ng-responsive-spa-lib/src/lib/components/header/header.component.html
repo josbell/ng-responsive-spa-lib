@@ -3,7 +3,7 @@
   <div fxLayout>
     <rsl-menu fxHide fxShow.gt-sm></rsl-menu>
     <rsl-social-media-bar fxHide fxShow.gt-sm></rsl-social-media-bar>
-    <button *ngIf="!userApi.isLoggedIn" mat-button routerLink="/signin">Log In</button>
-    <button *ngIf="userApi.isLoggedIn" mat-button (click)="signOut()">Log Out</button>
+    <button *ngIf="!(userApi.isLoggedIn | async)" mat-button routerLink="/signin">Log In</button>
+    <button *ngIf="userApi.isLoggedIn | async" mat-button (click)="signOut()">Log Out</button>
   </div>
 </header>
